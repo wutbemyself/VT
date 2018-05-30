@@ -9,19 +9,26 @@ import { DataService } from './data.service';
 import { LoginComponent } from './login/login.component';
 import { PuductComponent } from './puduct/puduct.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboarddComponent } from './dashboardd/dashboardd.component';
+// import { AccordionModule } from 'primeng/accordion';
+// import { MenuItem } from 'primeng/api';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {MatInputModule,MatButtonModule, MatCheckboxModule} from '@angular/material';
-
+// import { DataListModule, PanelModule, ButtonModule, RadioButtonModule } from 'primeng/primeng';
+import {enableProdMode} from '@angular/core';
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'product', component: PuductComponent }
+  { path: '', component: DashboarddComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'product', component: PuductComponent },
+  { path: '*', component: DashboarddComponent },
+  { path: '**', component: DashboarddComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PuductComponent
+    PuductComponent,
+    DashboarddComponent
   ],
   imports: [
     FormsModule,
@@ -29,10 +36,6 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    // BrowserAnimationsModule,
-    // MatInputModule,
-    // MatButtonModule,
-    // MatCheckboxModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
