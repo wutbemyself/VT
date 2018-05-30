@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
+var log4js = require('log4js');
+var logger = log4js.getLogger();
+// logger.level = 'debug';
+logger.level = 'info';
+
 // ============================= MYSQL =========================================
 var mysql = require('mysql');
 var ConMysql = require('../config/Connection');
@@ -86,7 +91,10 @@ router.post('/users/insert', (req, res) => {
                 data: data,
                 resultCode: 'success'
             }
+            logger.info("Insert data successfuly.");
+            logger.debug(JSON.stringify(response.data));
             res.json(response);
+            
         });
     });
 });

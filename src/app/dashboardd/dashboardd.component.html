@@ -1,0 +1,455 @@
+<!-- ============================================================ HEADER =========================================================== -->
+<header role="banner">
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-5">
+          <ul class="social list-unstyled">
+            <li>
+              <a href="#">
+                <span class="fa fa-facebook"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fa fa-twitter"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="fa fa-instagram"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 col-7 text-right">
+          <p class="mb-0">
+            <a routerLink="/login" class="cta-btn">
+              <img class="iconb" src="./VT/img/tel.png" alt=""> 012-345-678</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img style="width:75px;" src="./VT/img/logo.png" alt="">
+        <img style="width:3px;" src="./VT/img/icon1.png" alt="">
+        <img style="width:60px;" src="./VT/img/logokeen.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="#">Services 1 </a>
+              <a class="dropdown-item" href="#">Services 2</a>
+              <a class="dropdown-item" href="#">Services 3</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown05">
+              <a class="dropdown-item" href="#">Product 1</a>
+              <a class="dropdown-item" href="#">Product 2</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- ============================================================ HEADER =========================================================== -->
+<!-- ============================================================ SLIDE ============================================================= -->
+<section class="home-slider owl-carousel">
+  <div class="slider-item" style="background-image: url('./VT/img/slider-2.jpg');">
+    <div class="container">
+      <div class="row slider-text align-items-center">
+        <div class="col-md-7 col-sm-12 element-animate">
+          <h1 style="color: rgb(36, 36, 36);">K E E E N INNOVATION</h1>
+          <!-- <p style="color: rgb(61, 61, 61);">SUSTAINABLE ENVIRONMENT</p> -->
+        </div>
+        <!-- <div class="col-md-5 col-sm-12 element-animate">
+            <img src="./VT/img/P.png" alt="Image Placeholder" class="img-fluid">
+          </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-item" style="background-image: url('./VT/img/slider-3.jpg');">
+    <div class="container">
+      <div class="row slider-text align-items-center">
+        <div class="col-md-7 col-sm-12 element-animate">
+          <h1>K E E E N INNOVATION</h1>
+          <!-- <p>SUSTAINABLE ENVIRONMENT SUSTAINABLE HAPPINESS</p> -->
+        </div>
+        <!-- <div class="col-md-5 col-sm-12 element-animate">
+            <img src="./VT/img/P.png" alt="Image Placeholder" class="img-fluid">
+          </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-item" style="background-image: url('./VT/img/slider-4.jpg');">
+    <div class="container">
+      <div class="row slider-text align-items-center">
+        <div class="col-md-7 col-sm-12 element-animate">
+          <h1>K E E E N INNOVATION</h1>
+          <!-- <p>SUSTAINABLE ENVIRONMENT SUSTAINABLE HAPPINESS</p> -->
+        </div>
+        <!-- <div class="col-md-5 col-sm-12 element-animate">
+            <img src="./VT/img/P.png" alt="Image Placeholder" class="img-fluid">
+          </div> -->
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- ============================================================ SLIDE ============================================================= -->
+<!-- ============================================================ GROUP ============================================================= -->
+<div class="row">
+  <div class="container element-animate" >
+    <div class="col-md">
+      <label class="ShowProductKEEN" (click)="ShowProduct('KN');">KEEEN</label>
+      <label class="ShowProductVW" (click)="ShowProduct('VW');">V-Wash</label>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ GROUP ============================================================= -->
+<!-- ============================================================ PRODUCT =========================================================== -->
+<section>
+  <div class="container">
+    <div [hidden]="ShowProductVwash">
+      <div class="row element-animate">
+        <div class="major-caousel js-carousel-1 owl-carousel">
+          <div class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct">
+            <img class="img-product" src="./VT/img/P1.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Surface Cleaner F.O.G Digester</h3>
+              <p>bio treatment which consists of high-performance enzymes.</p>
+            </div>
+          </div>
+          <div class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct2">
+            <img class="img-product" src="./VT/img/P2.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Oil Spill Control</h3>
+              <p>Oil Spill Control is a bio treatment which consists of high-performance enzymes</p>
+            </div>
+          </div>
+          <div class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct3">
+            <img class="img-product" src="./VT/img/P3.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Biowash Hand Anti-Bacteria</h3>
+              <p>Formulated with natural, plant-derived cleaner to produce a rich</p>
+            </div>
+          </div>
+          <div class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct4">
+            <img class="img-product" src="./VT/img/P4.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Parts Cleaner</h3>
+              <p>It is a kind of advance bio cleaner called Bioremediation agent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [hidden]="ShowProductKeen">
+      <div class="row element-animate">
+        <div class="major-caousel js-carousel-1 owl-carousel">
+          <div style="background-color: #FFCC00;" class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct">
+            <img class="img-product" src="./VT/img/P1.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Surface Cleaner F.O.G Digester</h3>
+              <p>bio treatment which consists of high-performance enzymes.</p>
+            </div>
+          </div>
+          <div style="background-color: #FFCC00;" class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct2">
+            <img class="img-product" src="./VT/img/P2.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Oil Spill Control</h3>
+              <p>Oil Spill Control is a bio treatment which consists of high-performance enzymes</p>
+            </div>
+          </div>
+          <div style="background-color: #FFCC00;" class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct3">
+            <img class="img-product" src="./VT/img/P3.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Biowash Hand Anti-Bacteria</h3>
+              <p>Formulated with natural, plant-derived cleaner to produce a rich</p>
+            </div>
+          </div>
+          <div style="background-color: #FFCC00;" class="media d-block media-custom " data-toggle="modal" data-target="#modalShowProduct4">
+            <img class="img-product" src="./VT/img/P4.png" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <h3 class="mt-0 text-black">Parts Cleaner</h3>
+              <p>It is a kind of advance bio cleaner called Bioremediation agent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============================================================ PRODUCT =========================================================== -->
+<!-- ============================================================ CONTENT =========================================================== -->
+<section class="cover_1" style="background-image: url(./VT/img/bg_1.png);">
+</section>
+<section class="cover_1" style="background-image: url(./VT/img/bg_1.jpg);">
+  <div class="container">
+    <div class="row text-center justify-content-center">
+      <div class="col-md-10">
+        <h1 class="heading element-animate">K E E E N INNOVATION</h1>
+        <h4 class="heading element-animate" style="color:beige">
+          SUSTAINABLE ENVIRONMENT
+          <br> SUSTAINABLE HAPPINESS</h4>
+        <p class="sub-heading element-animate mb-5">BIOREMEDIATION AGENT We are the experts and leaders in Industrial Ecology Management in the industrial sector, and
+          we collaborate with The National Center for Genetic Engineering and Biotechnology (BIOTEC), the National Science
+          and Technology Development Agency (NSTDA) and other environmentalists on the development of new innovations namely
+          our “Bioremediation Agent”.
+        </p>
+        <!-- <p class="element-animate">
+            <a href="#" class="btn btn-primary btn-lg">Get In Touch</a>
+          </p> -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============================================================ CONTENT =========================================================== -->
+<!-- ============================================================ NEW  ============================================================== -->
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center mb-5 element-animate">
+      <div class="col-md-8 text-center mb-5">
+        <h2 class="text-uppercase heading  mb-4">News &amp; Events</h2>
+
+      </div>
+    </div>
+    <div class="row element-animate">
+      <div class="major-caousel js-carousel-2 owl-carousel">
+        <div class="media d-block media-custom text-left">
+          <img src="./VT/img/NEW1.jpg" alt="Image Placeholder" class="img-fluid">
+          <div class="media-body">
+            <span class="meta-post">December 2, 2017</span>
+            <h3 class="mt-0 text-black">
+              <a href="#" class="text-black">KEEEN ACTIVITY</a>
+            </h3>
+            <p>Relationship & Partnership which embrace Innovation “KEEEN & Thai Oil”</p>
+            <p class="clearfix">
+              <a href="#" class="float-left">Read more</a>
+              <a href="#" class="float-right meta-chat">
+                <span class="ion-chatbubble"></span> 8</a>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="media d-block media-custom text-left">
+            <img src="./VT/img/NEW3.jpg" alt="Image Placeholder" class="img-fluid">
+            <div class="media-body">
+              <span class="meta-post">December 2, 2017</span>
+              <h3 class="mt-0 text-black">
+                <a href="#" class="text-black">KEEEN ACTIVITY</a>
+              </h3>
+              <p>KEEEN ACTIVITY OPEN FILMS AROUND THE SPECIAL “THE FOUNDER”</p>
+              <p class="clearfix">
+                <a href="#" class="float-left">Read more</a>
+                <a href="#" class="float-right meta-chat">
+                  <span class="ion-chatbubble"></span> 2</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="media d-block media-custom text-left">
+          <img src="./VT/img/NEW1.jpg" alt="Image Placeholder" class="img-fluid">
+          <div class="media-body">
+            <span class="meta-post">December 2, 2017</span>
+            <h3 class="mt-0 text-black">
+              <a href="#" class="text-black">KEEEN ACTIVITY</a>
+            </h3>
+            <p>Relationship & Partnership which embrace Innovation “KEEEN & Thai Oil”</p>
+            <p class="clearfix">
+              <a href="#" class="float-left">Read more</a>
+              <a href="#" class="float-right meta-chat">
+                <span class="ion-chatbubble"></span> 8</a>
+            </p>
+          </div>
+        </div>
+        <div class="media d-block media-custom text-left">
+          <img src="./VT/img/NEW3.jpg" alt="Image Placeholder" class="img-fluid">
+          <div class="media-body">
+            <span class="meta-post">December 2, 2017</span>
+            <h3 class="mt-0 text-black">
+              <a href="#" class="text-black">KEEEN ACTIVITY</a>
+            </h3>
+            <p>KEEEN ACTIVITY OPEN FILMS AROUND THE SPECIAL “THE FOUNDER”</p>
+            <p class="clearfix">
+              <a href="#" class="float-left">Read more</a>
+              <a href="#" class="float-right meta-chat">
+                <span class="ion-chatbubble"></span> 2</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============================================================ NEW  ============================================================== -->
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="col-md-6 col-sm-12 copyright">
+      <p>Copyright © 2017, KEEEN | Sustainable Environment Sustainable</p>
+    </div>
+  </div>
+</footer>
+<!-- ============================================================ FOOTER ============================================================ -->
+<!-- ============================================================ Modal CONTACT ===================================================== -->
+<div class="modal fade" id="modalAppointment" tabindex="-1" role="dialog" aria-labelledby="modalAppointmentLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAppointmentLabel">Appointment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#">
+          <div class="form-group">
+            <label for="appointment_name" class="text-black">Full Name</label>
+            <input type="text" class="form-control" id="appointment_name">
+          </div>
+          <div class="form-group">
+            <label for="appointment_email" class="text-black">Email</label>
+            <input type="text" class="form-control" id="appointment_email">
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="appointment_date" class="text-black">Date</label>
+                <input type="text" class="form-control" id="appointment_date">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="appointment_time" class="text-black">Time</label>
+                <input type="text" class="form-control" id="appointment_time">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="appointment_message" class="text-black">Message</label>
+            <textarea name="" id="appointment_message" class="form-control" cols="30" rows="10"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Send Message" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ============================================================ Modal CONTACT ===================================================== -->
+<!-- ============================================================ Modal Product1 ==================================================== -->
+<div class="modal fade " id="modalShowProduct" tabindex="-1" role="dialog" aria-labelledby="modalShowProductLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalShowProductLabel">Product Detail</h5>
+        <button type="button" onclick="myFunction()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./VT/img/P1.png" alt="Image Placeholder" class="img-fluid">
+        <br>
+        <br>
+        <h3 class="mt-0 text-black">Surface Cleaner F.O.G Digester</h3>
+        <p>bio treatment which consists of high-performance enzymes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ Modal Product1 ==================================================== -->
+<!-- ============================================================ Modal Product2 ==================================================== -->
+<div class="modal fade " id="modalShowProduct2" tabindex="-1" role="dialog" aria-labelledby="modalShowProduct2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalShowProduct2Label">Product Detail</h5>
+        <button type="button" onclick="myFunction()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./VT/img/P2.png" alt="Image Placeholder" class="img-fluid">
+        <br>
+        <br>
+        <h3 class="mt-0 text-black">Oil Spill Control</h3>
+        <p>Oil Spill Control is a bio treatment which consists of high-performance enzymes</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ Modal Product2 ==================================================== -->
+<!-- ============================================================ Modal Product3 ==================================================== -->
+<div class="modal fade " id="modalShowProduct3" tabindex="-1" role="dialog" aria-labelledby="modalShowProduct3Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalShowProduct3Label">Product Detail</h5>
+        <button type="button" onclick="myFunction()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./VT/img/P3.png" alt="Image Placeholder" class="img-fluid">
+        <br>
+        <br>
+        <h3 class="mt-0 text-black">Biowash Hand Anti-Bacteria</h3>
+        <p>Formulated with natural, plant-derived cleaner to produce a rich, abundant lather that gently refreshes your skin
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ Modal Product3 ==================================================== -->
+<!-- ============================================================ Modal Product4 ==================================================== -->
+<div class="modal fade " id="modalShowProduct4" tabindex="-1" role="dialog" aria-labelledby="modalShowProduct4Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalShowProduct4Label">Product Detail</h5>
+        <button type="button" onclick="myFunction()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./VT/img/P4.png" alt="Image Placeholder" class="img-fluid">
+        <br>
+        <br>
+        <h3 class="mt-0 text-black">Parts Cleaner</h3>
+        <p>It is a kind of advance bio cleaner called Bioremediation agent (Bio Organic)</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ Modal Product4 ==================================================== -->
