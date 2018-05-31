@@ -14,9 +14,18 @@ export class DataService {
   }
 
   Insert(data) {
-    return this._http.post('/api/users/insert', data).map(result =>
-      // this.result = result.json().data
-      result.json().data || { resultCode: 500, data: this.result.json().data , message:'insert fail.' }
+    let Header = new Headers();
+    Header.append("Content-Type", "application/json");
+    return this._http.post('/api/users/register', data, { headers: Header }).map(result =>
+      result.json()._body || { resultCode: 500, data: this.result.json().data, message: 'insert fail.' }
+    );
+  }
+
+  Login(data) {
+    let Header = new Headers();
+    Header.append("Content-Type", "application/json");
+    return this._http.post('/api/users/authenticate', data, { headers: Header }).map(result =>
+      result || { resultCode: 500, data: this.result.json().data, message: 'password fail.' }
     );
   }
 }

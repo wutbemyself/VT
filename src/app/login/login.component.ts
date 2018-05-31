@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   }
   Fdata: any = {}
   users: any
+  datatest = '';
   ngOnInit() {
     this.Fdata = {
       user: 'user',
@@ -19,12 +20,12 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this._dataService.Insert(this.Fdata).subscribe(response => {
-      debugger
-      var data = response.data;
-      this.Fdata.user = data[0].user;
-      this.Fdata.pwd = data[0].pwd;
-
+    this._dataService.Login(this.Fdata).subscribe(response => {
+      var data = JSON.parse(response['_body']);
+      if (data.success) {
+        console.log('login Success');
+        this.datatest = data.token;
+      }
     });
   }
 

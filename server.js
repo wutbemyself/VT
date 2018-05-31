@@ -1,15 +1,15 @@
 const express = require('express');
-// logger = require('./logger'),
 const bodyParser = require('body-parser');
 const path = require('path');
-// _ = require('lodash'),
 const http = require('http');
 const app = express();
-
+const passport = require('passport');
 const api = require('./app/routes/api');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+require('./app/config/passport')(passport);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/api', api);
