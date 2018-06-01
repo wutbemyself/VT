@@ -13,11 +13,11 @@ export class DataService {
     );
   }
 
-  Insert(data) {
+  Register(data) {
     let Header = new Headers();
     Header.append("Content-Type", "application/json");
     return this._http.post('/api/users/register', data, { headers: Header }).map(result =>
-      result.json()._body || { resultCode: 500, data: this.result.json().data, message: 'insert fail.' }
+      result['_body'] || { resultCode: 500, data: this.result.json().data, message: 'insert fail.' }
     );
   }
 

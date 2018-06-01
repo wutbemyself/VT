@@ -3,11 +3,12 @@ const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 var log4js = require('log4js');
+var logger4 = log4js.getLogger();
 var logger = log4js.getLogger();
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var SECRET = 'KEEEN-VT';
-logger.level = 'info';
+logger4.level = 'info';
 const User = require('./user')
 // ============================= MYSQL =========================================
 var mysql = require('mysql');
@@ -36,7 +37,7 @@ const sendError = (err, res) => {
 let response = {
     status: 200,
     data: [],
-    message: null
+    resultCode: null
 }
 
 
@@ -52,6 +53,7 @@ router.post('/users/authenticate', (req, res, next) => {
     const username = req.body.user;
     const password = req.body.pwd;
     User.getUserByUsername(username, (err, pwd) => {
+        debugger
         if (err) throw err
         if (!pwd) {
             return res.json({
@@ -60,6 +62,7 @@ router.post('/users/authenticate', (req, res, next) => {
             });
         }
         User.comparePassword(password, pwd, (err, isMatch) => {
+            debugger
             if (err) throw err;
             var data = {
                 user: username,
@@ -116,33 +119,32 @@ router.post('/users/insert', (req, res) => {
 });
 
 router.post('/users/register', (req, res) => {
-
     var data = [];
     data.push(req.body);
-    var sql = "SELECT max(id) as MAX FROM `user` limit 1"
-    connection.query(sql, function (err, id) {
-        var id = parseInt(id[0].MAX) + 1;
-        var sql = "INSERT INTO `user`(`id`, `user`, `password`) VALUES (";
-        for (let i = 0; i < data.length; i++) {
-            sql += `'` + (id + i) + `','` + data[i].user + `','` + data[i].pwd + `'`;
-        }
-        sql += `)`;
-        connection.query(sql, function (err, users) {
-            if (err) {
-                throw err;
+    var sql = "SELECT max(id) as MAX FROM `user` limit 1";
+    User.cryptPassword(data[0].pwd, (err, pwd) => {
+        connection.query(sql, function (err, id) {
+            var id = parseInt(id[0].MAX) + 1;
+            var sql = "INSERT INTO `user`(`id`, `user`, `password`) VALUES (";
+            for (let i = 0; i < data.length; i++) {
+                sql += `'` + (id + i) + `','` + data[i].user + `','` + pwd + `'`;
             }
-            response.data = {
-                status: 200,
-                data: data,
-                resultCode: 'success'
-            }
-            logger.info("Insert data successfuly.");
-            logger.info(JSON.stringify(response.data));
-            res.json(response);
+            sql += `)`;
+            connection.query(sql, function (err, users) {
+                if (err) {
+                    throw err;
+                }
+                response = {
+                    status: 200,
+                    data: data,
+                    resultCode: 'success'
+                };
+                logger4.info("Insert data successfuly.");
+                logger.info(JSON.stringify(response));
+                res.json(response);
 
+            });
         });
     });
-
 });
-
 module.exports = router;

@@ -15,10 +15,11 @@ module.exports.getUserById = function (id, callback) {
     callback(id);
 }
 
-module.exports.getUserByUsername = function (username, callback) {
+module.exports.getUserByUsername = function (username, callback) { 
     var sql = `select password from user where user='` + username + `'`;
     logger.info(sql);
     connection.query(sql, (err, data) => { 
+        debugger
         if (err) {
             callback('false',false);
         }
@@ -43,10 +44,10 @@ exports.cryptPassword = function (password, callback) {
     });
 };
 
-module.exports.comparePassword = function (candidatePassword, hash, callback) {
+module.exports.comparePassword = function (candidatePassword, hash, callback) { debugger
     bcrypt.hash(candidatePassword, 10, function (err, hash) {
-        if (err) { throw (err); }
-        bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        if (err) { throw (err); } debugger
+        bcrypt.compare(candidatePassword, hash, (err, isMatch) => { 
             if (err) {
                 throw err;
             }
