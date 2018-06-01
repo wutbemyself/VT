@@ -17,7 +17,7 @@ export class DataService {
     let Header = new Headers();
     Header.append("Content-Type", "application/json");
     return this._http.post('/api/users/register', data, { headers: Header }).map(result =>
-      result['_body'] || { resultCode: 500, data: this.result.json().data, message: 'insert fail.' }
+      result['_body'] || { resultCode: 500, data: this.result.json().data, message: 'Register failed.' }
     );
   }
 
@@ -25,7 +25,7 @@ export class DataService {
     let Header = new Headers();
     Header.append("Content-Type", "application/json");
     return this._http.post('/api/users/authenticate', data, { headers: Header }).map(result =>
-      result || { resultCode: 500, data: this.result.json().data, message: 'password fail.' }
+      result['_body'] || { resultCode: 500, data: this.result.json().data, message: 'password failed.' }
     );
   }
 }

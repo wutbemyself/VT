@@ -10,8 +10,9 @@ export class AppComponent {
   title = 'app';
   users:Array<any>
   constructor(private _dataService : DataService){
-    this._dataService.getUser().subscribe(res => 
-      this.users = res 
-    );
+    // // ยิงไปเพื่อเช็ค token
+    // this._dataService.getUser().subscribe(res => 
+    //   this.users = res 
+    // );
   }
 }

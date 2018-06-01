@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   Fdata: any = {}
   users: any
   datatest = '';
+  authtoken :any
+  user :any
   ngOnInit() {
     this.Fdata = {
       user: 'user',
@@ -21,10 +23,14 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this._dataService.Login(this.Fdata).subscribe(response => {
-      var data = JSON.parse(response['_body']);
-      if (data.success) {
+      var data = JSON.parse(response);
+      if (data.status == 200) {
         console.log('login Success');
-        this.datatest = data.token;
+        this.datatest = data.data.token;
+        sessionStorage.setItem('authen',data.data.token)
+        sessionStorage.setItem('user',JSON.stringify(data.data.data))
+        this.authtoken = data.token
+        this.user = data;
       }
     });
   }

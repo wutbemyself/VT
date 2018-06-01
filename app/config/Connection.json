@@ -1,7 +1,12 @@
-
 {
-    "host": "localhost",
-    "database": "mean",
-    "user": "root",
-    "password": ""
+    "mysql": {
+        "host": "localhost",
+        "database": "mean",
+        "user": "root",
+        "password": ""
+    },
+    "mongo": {
+        "database": "mongodb://localhost:27017/meanauth",
+        "secret": "yoursecret"
+    }
 }

@@ -1,36 +1,32 @@
 var logger = require('logger').createLogger();
 const bcrypt = require('bcrypt');
+// var MysqlConnection = require('../module/mysql-Connect/Connection'); 
+// var connection = new MysqlConnection();
 var mysql = require('mysql');
-var ConMysql = require('../config/Connection');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'mean'
-
+var con = require('../config/Connection.json');
+var connection = mysql.createConnection(con.mysql);
+// connection.connect();
+var log4js = require('log4js');
+var logger = log4js.getLogger('KEEEN-VT');
+connection.connect((err) => {
+    if (err) {
+        logger.debug('Disconnect to database ' + err);
+    }
+    else {
+        logger.error('Database Connectto Mysql successfully.');
+    }
 });
-connection.connect();
-module.exports.getUserById = function (id, callback) {
-    debugger
-    callback(id);
-}
 
 module.exports.getUserByUsername = function (username, callback) { 
     var sql = `select password from user where user='` + username + `'`;
-    logger.info(sql);
+    console.log(sql);
     connection.query(sql, (err, data) => { 
-        debugger
         if (err) {
             callback('false',false);
         }
         callback(null, data[0].password);
     })
     // callback(username);
-}
-
-module.exports.getUserById = function (id, callback) {
-    debugger
-    callback(id);
 }
 
 exports.cryptPassword = function (password, callback) {
