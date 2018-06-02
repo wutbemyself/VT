@@ -11,7 +11,7 @@ module.exports.query = function (sql, callback) {
     connection.query(sql, (err, data) => {
         if (err) {
             console.log(err);
-            callback('false', false);
+            callback(err, false);
         }
         callback(null, data);
     })

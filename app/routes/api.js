@@ -7,28 +7,12 @@ var jwt = require('jsonwebtoken');
 var SECRET = 'KEEEN-VT';
 var Mysql = require('../models/mysql');
 var User = require('../module/User/user');
-var UserCntr = require('../module/User/user-cntr');
 
 const sendError = (err, res) => {
     response.status = 501;
     response.message = typeof err == 'object' ? err.message : err;
     res.status(501).json(response);
 }
-
-let response = {
-    status: 200,
-    data: [],
-    resultCode: null
-}
-
-
-// router.get('/users', (req, res) => { 
-//     Mysql.query('select * from user ', function (err, users) { 
-//         if (err) { throw err; }
-//         response.data = users;
-//         res.json(response);
-//     });
-// });
 
 router.post('/users/authenticate', (req, res, next) => {
     const username = req.body.user;
@@ -37,8 +21,8 @@ router.post('/users/authenticate', (req, res, next) => {
         if (err) throw err
         if (!pwd) {
             return res.json({
-                success: false,
-                msg: 'User not found.'
+                status: 500,
+                resultCode: 'User not found.'
             });
         }
         User.comparePassword(password, pwd, (err, isMatch) => {
