@@ -5,6 +5,7 @@ const http = require('http');
 const app = express();
 const passport = require('passport');
 const api = require('./app/routes/api');
+const user = require('./app/routes/routes');
 var log4js = require('log4js');
 var logger = log4js.getLogger('KEEEN-VT');
 app.use(bodyParser.json());
@@ -15,6 +16,7 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/api', api);
+app.use('/api', user);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

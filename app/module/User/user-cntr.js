@@ -5,35 +5,13 @@ const ObjectID = require('mongodb').ObjectID;
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var SECRET = 'KEEEN-VT';
-var Mysql = require('../models/mysql');
-var User = require('../module/User/user');
-var UserCntr = require('../module/User/user-cntr');
+const Mysql = require('../../models/mysql');
+const User = require('../../module/User/user');
 
-const sendError = (err, res) => {
-    response.status = 501;
-    response.message = typeof err == 'object' ? err.message : err;
-    res.status(501).json(response);
-}
-
-let response = {
-    status: 200,
-    data: [],
-    resultCode: null
-}
-
-
-// router.get('/users', (req, res) => { 
-//     Mysql.query('select * from user ', function (err, users) { 
-//         if (err) { throw err; }
-//         response.data = users;
-//         res.json(response);
-//     });
-// });
-
-router.post('/users/authenticate', (req, res, next) => {
+module.exports.Authenticate = function (req, res) {
     const username = req.body.user;
     const password = req.body.pwd;
-    User.getUserByUsername(username, (err, pwd) => {
+    User.getUserByUsername(username, res, (err, pwd) => {
         if (err) throw err
         if (!pwd) {
             return res.json({
@@ -52,19 +30,18 @@ router.post('/users/authenticate', (req, res, next) => {
                     expiresIn: 604800
                 })
                 console.log(JSON.stringify({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" }));
-                res.json({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" });
+                res.writeHead({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" });
             } else {
                 console.log({
                     status: 500,
                     resultCode: 'Wrong password.'
                 });
-                return res.json({
+                res.json({
                     status: 500,
                     resultCode: 'Wrong password.'
                 })
             }
         })
     })
-});
+}
 
-module.exports = router;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { logging } from 'protractor';
 
 @Component({
   selector: 'app-dashboardd',
@@ -8,13 +9,29 @@ import { Component, OnInit } from '@angular/core';
 export class DashboarddComponent implements OnInit {
   ShowProductKeen = true;
   ShowProductVwash = false;
-  constructor() { }
 
+  constructor() { }
+  user: any
   ngOnInit() {
+    this.user = '*';
     this.ShowProductKeen = true;
+    if (sessionStorage.getItem('authen')) {
+      this.user = JSON.parse(sessionStorage.getItem('user'));
+      console.log(this.user + ' logging...');
+    };
   }
 
-  ShowProduct(PD) { 
+  logout() {
+    if (sessionStorage.getItem('authen')) {
+      (this.user ? this.user : this.user = '')
+      console.log(this.user + ' logout...');
+      sessionStorage.removeItem('authen');
+      sessionStorage.removeItem('user');
+      this.user = '*';
+    }
+  }
+
+  ShowProduct(PD) {
     if (PD == 'VW') {
       this.ShowProductVwash = true;
       this.ShowProductKeen = false;

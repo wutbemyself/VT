@@ -23,10 +23,11 @@
           </ul>
         </div>
         <div class="col-md-6 col-sm-6 col-7 text-right">
-          <p class="mb-0">
-            <a routerLink="/login" class="cta-btn">
-              <img class="iconb" src="./VT/img/tel.png" alt=""> 012-345-678</a>
-          </p>
+          <div routerLink="/login">
+            <img class="iconb" src="./VT/img/tel.png" alt=""> 012-345-678</div>
+          <div>
+            <label (click)="logout();" class="cta-btn"> {{user}}</label>
+          </div>
         </div>
       </div>
     </div>
@@ -125,7 +126,7 @@
 <!-- ============================================================ SLIDE ============================================================= -->
 <!-- ============================================================ GROUP ============================================================= -->
 <div class="row">
-  <div class="container element-animate" >
+  <div class="container element-animate">
     <div class="col-md">
       <label class="ShowProductKEEN" (click)="ShowProduct('KN');">KEEEN</label>
       <label class="ShowProductVW" (click)="ShowProduct('VW');">V-Wash</label>
