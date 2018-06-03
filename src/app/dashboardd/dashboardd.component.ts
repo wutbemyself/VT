@@ -13,7 +13,7 @@ export class DashboarddComponent implements OnInit {
   constructor() { }
   user: any
   ngOnInit() {
-    this.user = '*';
+    this.user = 'เข้าสู่ระบบ';
     this.ShowProductKeen = true;
     if (sessionStorage.getItem('authen')) {
       this.user = JSON.parse(sessionStorage.getItem('user'));

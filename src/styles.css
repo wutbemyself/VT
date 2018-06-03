@@ -1,6 +1,5 @@
 body {
-    background: #0c98dc;
-  
+    background: #0c98dc;  
     /* background-image: url('../img/BG2.jpg');*/
     /* background-size: cover; */
     background-repeat: no-repeat; 
@@ -28,7 +27,7 @@ body {
   }
   
   h1, h2, h3, h4, h5 {
-    color: #000;
+    color: #FFF;
   }
   
   .btn, .form-control {
@@ -57,7 +56,7 @@ body {
   }
   
   header .top-bar {
-    background: #6dac15;
+    background: #1390cc;
   }
   
   header .top-bar a {
@@ -80,7 +79,7 @@ body {
   }
   
   header .top-bar .social {
-    margin-bottom: 0;
+    margin: 0;
   }
   
   header .top-bar .social li {
@@ -90,8 +89,9 @@ body {
   
   header .top-bar .social li a {
     color: #fff;
-    padding: 10px;
-    width: 40px;
+    padding: -50px;
+    /* margin: 0; */
+    width: 90px;
     display: inline-block;
   }
   
@@ -104,8 +104,8 @@ body {
   }
   
   header .top-bar .social li a:hover {
-    background: #9fdb4b;
-    color: #0c98dc;
+    background: #0c98dc;
+    color: #fff;
     -webkit-box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.1);
   }
@@ -125,13 +125,15 @@ body {
   }
   
   header .navbar .nav-link {
-    padding: 1.7rem 1rem;
+    /* padding: 1.7rem 1rem; */
     outline: none !important;
+    color: #FFF;
   }
   
   @media (max-width: 1199px) {
     header .navbar .nav-link {
       padding: .5rem 0rem;
+      color: #FFF;
     }
   }
   
@@ -153,8 +155,8 @@ body {
   }
   
   header .navbar .dropdown-menu a {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   
   /* Owl Carousel */
@@ -635,7 +637,7 @@ body {
   }
   
   .media-custom:focus, .media-custom:hover {
-    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: #98ff09;
     /* box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2); */
     box-shadow: 0 2px 10px 0 #98ff09;
     
@@ -693,7 +695,7 @@ body {
   
   .custom-tabs .nav-pills .nav-link.active {
     background: none;
-    color: #6dac15;
+    color: #FFF;;
     padding-left: 20px;
     position: relative;
   }
@@ -706,6 +708,7 @@ body {
     left: 0;
     width: 2px;
     background: #29b9ff;
+    color: #FFF;
   }
   
   .custom-tabs .tab-pane .icon {
@@ -846,3 +849,8 @@ body {
    background-color: #29b9ff;
    border: #29b9ff;
   } */
+
+  .fa-facebook{
+    margin: 0px;
+    padding: 0px;
+  }

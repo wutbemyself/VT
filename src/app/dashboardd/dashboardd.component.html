@@ -1,43 +1,41 @@
 <!-- ============================================================ HEADER =========================================================== -->
 <header role="banner">
-  <div class="top-bar">
+  <div class="top-bar" style="line-height: 0.5;">
     <div class="container">
-      <div class="row">
+      <div class="row" style="">
         <div class="col-md-6 col-sm-6 col-5">
           <ul class="social list-unstyled">
             <li>
-              <a href="#">
+              <!-- <a href="#">
                 <span class="fa fa-facebook"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
                 <span class="fa fa-twitter"></span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="fa fa-instagram"></span>
-              </a>
+              </a> -->
             </li>
           </ul>
         </div>
         <div class="col-md-6 col-sm-6 col-7 text-right">
-          <div routerLink="/login">
-            <img class="iconb" src="./VT/img/tel.png" alt=""> 012-345-678</div>
-          <div>
-            <label (click)="logout();" class="cta-btn"> {{user}}</label>
-          </div>
+          <ul class="social list-unstyled">
+            <li>
+              <a routerLink="/login">
+                <span>สมัครสมาชิก</span>
+              </a>
+            </li>
+            <li>
+              <a style="cursor: pointer;" (click)="logout();">
+                <span> {{user}}</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav  class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img style="width:75px;" src="./VT/img/logo.png" alt="">
-        <img style="width:3px;" src="./VT/img/icon1.png" alt="">
-        <img style="width:60px;" src="./VT/img/logokeen.png" alt="">
+        <img style="width:65px;" src="./VT/img/logo.png" alt="">
+        <!-- <img style="width:3px;" src="./VT/img/icon1.png" alt="">
+                  <img style="width:40px;" src="./VT/img/logokeen.png" alt=""> -->
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +44,10 @@
       <div class="collapse navbar-collapse" id="navbarsExample05">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link active" href="index.html">หน้าแรก</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+            <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">บริการ</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="#">Services 1 </a>
               <a class="dropdown-item" href="#">Services 2</a>
@@ -57,20 +55,20 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
+            <a class="nav-link dropdown-toggle" href="" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">สินค้า</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
               <a class="dropdown-item" href="#">Product 1</a>
               <a class="dropdown-item" href="#">Product 2</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">News</a>
+            <a class="nav-link" href="">ข่าวสาร</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">About</a>
+            <a class="nav-link" href="">เกี่ยวกับเรา</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Contact</a>
+            <a class="nav-link" href="">ติดต่อเรา</a>
           </li>
         </ul>
       </div>

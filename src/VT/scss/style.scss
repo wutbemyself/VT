@@ -115,12 +115,12 @@ header {
 			.dropdown-item {
 				&.active {
 					background: gray('100');
-					color: theme-color('primary')!important;
+					color: theme-color('#0c98dc')!important;
 				}
 			}
 			a {
-				padding-top: 7px;
-				padding-bottom: 7px;
+				padding-top: 5px;
+				padding-bottom: 5px;
 
 			}
 		}
