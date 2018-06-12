@@ -7,11 +7,12 @@ var jwt = require('jsonwebtoken');
 var SECRET = 'KEEEN-VT';
 const Mysql = require('../../models/mysql');
 const User = require('../../module/User/user');
+var logger = require('../../utils/logger')
 
 module.exports.Authenticate = function (req, res) {
     const username = req.body.user;
     const password = req.body.pwd;
-    User.getUserByUsername(username, res, (err, pwd) => {
+    User.getUserByUsername(req, username, res, (err, pwd) => {
         if (err) throw err
         if (!pwd) {
             return res.json({
@@ -29,7 +30,8 @@ module.exports.Authenticate = function (req, res) {
                 const token = jwt.sign(data, SECRET, {
                     expiresIn: 604800
                 })
-                console.log(JSON.stringify({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" }));
+                // console.log(JSON.stringify({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" }));
+                logger.write(req, '20000', JSON.stringify({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" }));
                 res.writeHead({ status: 200, data: { data: data.user, token: 'JWT' + token }, resultCode: "success" });
             } else {
                 console.log({

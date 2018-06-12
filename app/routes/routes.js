@@ -14,14 +14,14 @@ router.post('/users/register', (req, res) => {
     data.push(req.body);
     var sql = "SELECT max(id) as MAX FROM `user` limit 1";
     User.cryptPassword(data[0].pwd, (err, pwd) => {
-        Mysql.query(sql, function (err, id) {
+        Mysql.query(req,sql, function (err, id) {
             var id = parseInt(id[0].MAX) + 1;
             var sql = "INSERT INTO `user`(`id`, `user`, `password`) VALUES (";
             for (let i = 0; i < data.length; i++) {
                 sql += `'` + (id + i) + `','` + data[i].user + `','` + pwd + `'`;
             }
             sql += `)`;
-            Mysql.query(sql, function (err, users) {
+            Mysql.query(req,sql, function (err, users) {
                 if (err) {
                     throw err;
                 }

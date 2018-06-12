@@ -1,11 +1,9 @@
 const bcrypt = require('bcrypt');
 const Mysql = require('../../models/mysql');
-var log4js = require('log4js');
-var logger = log4js.getLogger('KEEEN-VT');
 
-module.exports.getUserByUsername = function (username, callback) {
+module.exports.getUserByUsername = function (req,username, callback) {
     var sql = `select password from user where user='` + username + `'`;
-    Mysql.query(sql, (err, data) => {
+    Mysql.query(req,sql, (err, data) => {
         if (err) {
             console.log(err);
             callback('false', false);

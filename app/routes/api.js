@@ -15,9 +15,10 @@ const sendError = (err, res) => {
 }
 
 router.post('/users/authenticate', (req, res, next) => {
+    
     const username = req.body.user;
     const password = req.body.pwd;
-    User.getUserByUsername(username, (err, pwd) => {
+    User.getUserByUsername(req,username, (err, pwd) => {
         if (err) throw err
         if (!pwd) {
             return res.json({

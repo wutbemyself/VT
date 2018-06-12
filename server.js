@@ -6,8 +6,8 @@ const app = express();
 const passport = require('passport');
 const api = require('./app/routes/api');
 const user = require('./app/routes/routes');
-var log4js = require('log4js');
-var logger = log4js.getLogger('KEEEN-VT');
+var logger = require('./app/utils/logger');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
@@ -24,7 +24,9 @@ const port = process.env.PORT || '8098';
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => {
-    console.log(`Server run on port ${port}`)
+    console.log(`Server run on port ${port}`),
+    logger.write('data', 'debug', '#Server run on port : 8089');
 }
+
 );
 

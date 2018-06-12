@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
       if (data.status == 200) {
         console.log('login Success');
         this.datatest = data.data.token;
+        
         sessionStorage.setItem('authen', data.data.token)
-        sessionStorage.setItem('user', JSON.stringify(data.data.data))
+        sessionStorage.setItem('currentUser', JSON.stringify(data.data.data))
         this.authtoken = data.token
         this.user = data;
         this.router.navigate(['deshboard']);

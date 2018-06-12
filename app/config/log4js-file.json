@@ -1,0 +1,16 @@
+{
+    "appenders": {
+        "keenvt": {
+            "type": "file",
+            "filename": "logs/logs.log"
+        }
+    },
+    "categories": {
+        "default": {
+            "appenders": [
+                "keenvt"
+            ],
+            "level": "debug"
+        }
+    }
+}
