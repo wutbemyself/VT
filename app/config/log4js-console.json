@@ -1,7 +1,8 @@
 {
     "appenders": {
         "console": {
-            "type": "console"
+            "type": "console",
+            "pattern": "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p - %m%n"
         }
     },
     "categories": {

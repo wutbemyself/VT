@@ -2,8 +2,8 @@ const log4js = require('log4js');
 var moment = require('moment');
 var date = Date.now();
 date = moment(date).format('DD-MM-YYYY');
-
 var logger = module.exports = {};
+var memCache = require('memory-cache');
 
 logger.debug = function (msg) {
     log4js.configure('./app/config/log4js-file.json');
@@ -13,6 +13,17 @@ logger.debug = function (msg) {
     var _logger = log4js.getLogger('KEEN-VT');
     _logger.level = 'debug';
     _logger.debug(msg);
+
+};
+
+logger.info = function (msg) {
+    log4js.configure('./app/config/log4js-file.json');
+    const logger = log4js.getLogger('KEEN-VT');
+    logger.info(msg);
+    log4js.configure('./app/config/log4js-console.json');
+    var _logger = log4js.getLogger('KEEN-VT');
+    _logger.level = 'info';
+    _logger.info(msg);
 
 };
 
@@ -27,41 +38,36 @@ logger.error = function (msg, err) {
 
 };
 
-logger.log = function (msg) { debugger
-    var header = logger.header || '';
-    _logger.log(header + '::' + msg);
+logger.log = function (msg) {
+    // var header = logger.header || '';
+    _logger.log(msg);
 };
 
-// logger.fatal = function (msg) {
-//     var header = logger.header || '';
-//     _logger.fatal(header + '::' + msg);
-// };
-
-// logger.stream = {
-//     write: function (message, encoding) {
-//         _accessLogger.debug(message);
-//     }
-// };
-
-logger.write = function (req, type, data) { debugger
+logger.write = function (req, type, data) {
+    // var token = (req.headers && req.headers.authorization ? JSON.parse(req.headers.authorization) : '');
+    var user = memCache.get('user') ? memCache.get('user') : '';
+    var sessionID = memCache.get('sessionID') ? memCache.get('sessionID') : '';
     var sessionId;
-    var header = logger.header || '';
-    if (req && req.currentUser) {
-        sessionId = req.currentUser.id + " - " + req.sessionID + " - " + req.id + " :: ";
+    if (req && req.headers) {
+        sessionId = user + " - " + sessionID + " :: ";
     }
+    (sessionId || sessionId != undefined ? sessionId : sessionId = '')
     if (type != null && type != undefined) {
-        try {
+        try { 
             switch (type) {
                 case 'debug':
-                    logger.debug(header + ' :: ' + sessionId + data);
+                    logger.debug(sessionId + data);
+                    break;
+                case 'info':
+                    logger.info(sessionId + data);
                     break;
                 case 'error':
-                    logger.error(header + ' :: ' + sessionId + data);
+                    logger.error(sessionId + data);
                     break;
                 default:
             }
         } catch (e) {
-            logger.error(header + ' :: ' + sessionId + e);
+            logger.error(sessionId + e);
         }
     }
 

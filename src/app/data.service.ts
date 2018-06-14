@@ -27,12 +27,14 @@ export class DataService {
   }
 
   Login(data) {
-    let Header = new Headers();
-    Header.append("Content-Type", "application/json");
-    // let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    // let Header = new Headers();
+    // Header.append("Content-Type", "application/json");
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let Header = new Headers({ 'Authorization': JSON.stringify(currentUser) });
+    Header.append("Content-Type", "application/json");
+
 		let options = new RequestOptions({ headers: Header });
-		options.headers = currentUser;
+		options.headers = currentUser; 
     return this._http.post('/api/users/authenticate', data, { headers: Header }).map(result =>
       result['_body'] || { resultCode: 500, data: this.result.json().data, message: 'password failed.' }
     );

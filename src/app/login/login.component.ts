@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.datatest = data.data.token;
         
         sessionStorage.setItem('authen', data.data.token)
-        sessionStorage.setItem('currentUser', JSON.stringify(data.data.data))
+        localStorage.setItem('currentUser', JSON.stringify(data.data))
         this.authtoken = data.token
         this.user = data;
         this.router.navigate(['deshboard']);

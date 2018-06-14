@@ -2,7 +2,8 @@
     "appenders": {
         "keenvt": {
             "type": "file",
-            "filename": "logs/logs.log"
+            "filename": "logs/logs.log",
+            "pattern": "%x{ln} %-5p %m"
         }
     },
     "categories": {

@@ -7,11 +7,11 @@ connection.connect((err) => {
         console.log('Disconnect to database [ERROR]: ' + err);
     }
 });
-module.exports.query = function (req,sql, callback) {
+module.exports.query = function (req,sql, callback) { 
     // console.log(sql); 
     // logger.write(req, 'info', '##  monitoring-WorkOrderSummary findByFilter  ##');
     
-    logger.write(req, 'debug', '===== api sql ====== ');
+    logger.write(req, 'info', 'api query call by ');
     connection.query(sql, (err, data) => {
         if (err) {
             console.log(err);
