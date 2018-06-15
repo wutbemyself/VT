@@ -13,14 +13,11 @@ router.post('/users/authenticate', (req, res) => {
     try {
         logger.write(req, 'debug', 'POST api/users/authenticate ');
         const username = req.body.user;
-        const password = req.body.pwd;
+        const password = req.body.password;
         User.getUserByUsername(req, username, (err, pwd) => {
             if (err) throw err
             if (!pwd) {
-                return res.json({
-                    status: 500,
-                    resultCode: 'User not found.'
-                });
+                return res.json({ status: 500, resultCode: 'User not found.' });
             }
             User.comparePassword(password, pwd, (err, isMatch) => {
                 if (err) throw err;
@@ -31,7 +28,7 @@ router.post('/users/authenticate', (req, res) => {
                 if (isMatch) {
                     const token = jwt.sign(data, SECRET, {
                         expiresIn: 604800
-                    })
+                    });
                     memCache.put('user', data.user);
                     memCache.put('sessionID', password);
                     memCache.put('token', 'JWT' + token);
