@@ -1,42 +1,41 @@
 const express = require('express');
 const router = express.Router();
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
-var expressJwt = require('express-jwt');
-var jwt = require('jsonwebtoken');
-var SECRET = 'KEEEN-VT';
-const Mysql = require('../models/mysql');
+const models = require('../../models');
+var Sequelize = require('sequelize');
+var logger = require('../../app/utils/logger');
 const User = require('../module/User/user');
 
 
 router.post('/users/register', (req, res) => {
-    var data = [];
-    data.push(req.body);
-    var sql = "SELECT max(id) as MAX FROM `user` limit 1";
-    User.cryptPassword(data[0].pwd, (err, pwd) => {
-        Mysql.query(req,sql, function (err, id) {
-            var id = parseInt(id[0].MAX) + 1;
-            var sql = "INSERT INTO `user`(`id`, `user`, `password`) VALUES (";
-            for (let i = 0; i < data.length; i++) {
-                sql += `'` + (id + i) + `','` + data[i].user + `','` + pwd + `'`;
-            }
-            sql += `)`;
-            Mysql.query(req,sql, function (err, users) {
-                if (err) {
-                    throw err;
-                }
-                response = {
-                    status: 200,
-                    data: data,
-                    resultCode: 'success'
+    try {
+        var user = req.body.user;
+        var password = req.body.password;
+        var sql = "SELECT max(id) as MAX FROM `user` limit 1";
+        User.cryptPassword(password, (err, pwd) => {
+            models.sequelize.query(sql, { type: Sequelize.QueryTypes.SELECT }).then(response => {
+                var id;
+                (response[0] && response[0].MAX ? id = parseInt(response[0].MAX) + 1 : id = 1);
+                var data = {
+                    id: id,
+                    name: user,
+                    user: user,
+                    password: pwd
                 };
-                console.log("Insert data successfuly.");
-                console.log(JSON.stringify({ status: 200, data: response, resultCode: "success" }));
-                res.json({ status: 200, data: response, resultCode: "success" });
-
+                models.User.create(data).then(response => {
+                    response = {
+                        resultCode: 200,
+                        data: response,
+                        resultDescription: 'success'
+                    };
+                    logger.write(req, 'info', JSON.stringify(response));
+                    res.json(response);
+                });
             });
         });
-    });
+    } catch (error) {
+        logger.write(req, 'error', 'Error Register : ' + error);
+        res.json({ resultCode: 500, resultDescription: error });
+    }
 });
 
 module.exports = router;

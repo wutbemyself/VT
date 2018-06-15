@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 const Mysql = require('../../models/mysql');
 
-module.exports.getUserByUsername = function (req,username, callback) {
+module.exports.getUserByUsername = function (req, username, callback) {
     var sql = `select password from user where user='` + username + `'`;
-    Mysql.query(req,sql, (err, data) => {
+    Mysql.query(req, sql, (err, data) => {
         if (err) {
             console.log(err);
             callback('false', false);
@@ -24,13 +24,18 @@ exports.cryptPassword = function (password, callback) {
 };
 
 module.exports.comparePassword = function (candidatePassword, hash, callback) {
-    bcrypt.hash(candidatePassword, 10, function (err, hash) {
-        if (err) { throw (err); }
-        bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
-            if (err) {
-                throw err;
-            }
-            callback(null, isMatch);
-        })
-    })
+    try {
+        // bcrypt.hash(candidatePassword, 10, function (err, hash) {
+            if (err) { throw (err); }
+            bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+                if (err) {
+                    throw err;
+                }
+                callback(null, isMatch);
+            })
+        // })
+    } catch (error) {
+        // logger.write(req, 'error', 'Error Login : ' + error);
+        callback(null, 'error');
+    }
 }

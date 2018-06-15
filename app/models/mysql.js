@@ -1,22 +1,24 @@
-var mysql = require('mysql');
-var con = require('../config/Connection.json');
-var logger = require('../utils/logger');
-var connection = mysql.createConnection(con.mysql);
-connection.connect((err) => {
-    if (err) {
-        console.log('Disconnect to database [ERROR]: ' + err);
-    }
-});
-module.exports.query = function (req,sql, callback) { 
-    // console.log(sql); 
-    // logger.write(req, 'info', '##  monitoring-WorkOrderSummary findByFilter  ##');
-    
-    logger.write(req, 'info', 'api query call by ');
-    connection.query(sql, (err, data) => {
-        if (err) {
-            console.log(err);
-            callback(err, false);
-        }
+const models = require('../../models');
+var Sequelize = require('sequelize');
+
+module.exports.query = function (req, sql, callback) {
+    models.sequelize.query(sql,{ type:Sequelize.QueryTypes.SELECT}).then(response => {
+        callback(null, response);
+    })
+}
+
+module.exports.insert = function (req, data, callback) {
+    models.User.create({ name: "Dang Thanh", user: "uuser", password: "1234", id: "2" }).then(response => { debugger
+        response.forEach(dataValues => {
+            data.push({
+                createdAt: dataValues.createdAt,
+                user: dataValues.user,
+                id: dataValues.id,
+                name: dataValues.name,
+                password: dataValues.password,
+                updatedAt: dataValues.updatedAt
+            });
+        });
         callback(null, data);
     })
 }

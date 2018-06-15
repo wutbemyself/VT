@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('users', {
+  return sequelize.define('User', {
     id: {
       allowNull: false,
       // autoIncrement: true,
@@ -9,25 +9,29 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       field: "id"
     },
-    title: {
+    name: {
       type: DataTypes.STRING,
-      field: "title"
+      field: "name"
     },
-    iscomplated: {
-      type: DataTypes.BOOLEAN,
-      field: "iscomplated"
+    user: {
+      type: DataTypes.STRING,
+      field: "user"
+    },
+    password: {
+      type: DataTypes.STRING,
+      field: "password"
     },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
-      field: "createdAt"
+      field: "created_at"
     },
     updatedAt: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.DATE,
-      field: "updatedAt"
+      field: "updated_at"
     }
   }, {
-      tableName: 'users'
+      tableName: 'user'
     });
 };
